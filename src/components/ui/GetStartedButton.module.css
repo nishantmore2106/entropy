@@ -1,0 +1,168 @@
+/* =========================================================================
+   PEARL BUTTON — UIVERSE.IO BY MARCELODOLZA
+   Refined for ENTROPY Minimal Visual Identity & Top Navbar
+   ========================================================================= */
+
+.button {
+  --radius: 100px;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  position: relative;
+  border-radius: var(--radius);
+  background-color: #080808;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 0.15rem 0.45rem rgba(255, 255, 255, 0.35),
+    inset 0 -0.05rem 0.15rem rgba(0, 0, 0, 0.7),
+    inset 0 -0.2rem 0.45rem rgba(255, 255, 255, 0.4),
+    0 0.8rem 1.5rem rgba(0, 0, 0, 0.4),
+    0 0.4rem 0.6rem -0.2rem rgba(0, 0, 0, 0.8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrap {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 10px 22px;
+  border-radius: inherit;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.01em;
+}
+
+.wrap p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  transition: all 0.25s ease;
+  transform: translateY(2%);
+  mask-image: linear-gradient(to bottom, white 55%, transparent);
+}
+
+.wrap p span:nth-child(2) {
+  display: none;
+}
+
+.button:hover .wrap p span:nth-child(1) {
+  display: none;
+}
+
+.button:hover .wrap p span:nth-child(2) {
+  display: inline-block;
+  color: #ffffff;
+}
+
+.wrap::before,
+.wrap::after {
+  content: "";
+  position: absolute;
+  transition: all 0.35s ease;
+  pointer-events: none;
+}
+
+.wrap::before {
+  left: -15%;
+  right: -15%;
+  bottom: 25%;
+  top: -100%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.wrap::after {
+  left: 6%;
+  right: 6%;
+  bottom: 12%;
+  top: 100%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.button:hover .wrap::before {
+  top: -30%;
+}
+
+.button:hover .wrap::after {
+  top: 20%;
+}
+
+.button:hover {
+  box-shadow: inset 0 0.18rem 0.55rem rgba(255, 255, 255, 0.45),
+    inset 0 -0.05rem 0.15rem rgba(0, 0, 0, 0.7),
+    inset 0 -0.22rem 0.55rem rgba(255, 255, 255, 0.48),
+    0 1rem 1.8rem rgba(0, 0, 0, 0.5),
+    0 0.5rem 0.8rem -0.2rem rgba(0, 0, 0, 0.9);
+}
+
+.button:active {
+  transform: scale(0.96);
+}
+
+.button:focus-visible {
+  box-shadow: inset 0 0.15rem 0.45rem rgba(255, 255, 255, 0.35),
+    inset 0 -0.05rem 0.15rem rgba(0, 0, 0, 0.7),
+    inset 0 -0.2rem 0.45rem rgba(255, 255, 255, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.8),
+    0 0.8rem 1.5rem rgba(0, 0, 0, 0.4);
+}
+
+/* Compact variant for mobile top bar */
+.compact .wrap {
+  font-size: 11.5px;
+  padding: 7px 15px;
+}
+
+/* Secondary Outlined Variant */
+.secondary {
+  --radius: 100px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  border-radius: var(--radius);
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.secondary .wrap {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 10px 22px;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.01em;
+}
+
+.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.secondary:active {
+  transform: scale(0.96);
+}
+
+.secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+

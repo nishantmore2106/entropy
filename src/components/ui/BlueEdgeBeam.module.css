@@ -1,0 +1,80 @@
+/* =========================================================================
+   ENTROPY — DUAL FLOWING BLUE LIGHT BEAMS
+   Two distinct thin light streaks (electric blue & pale cyan) travelling
+   continuously along card perimeters with smooth hover activation.
+   ========================================================================= */
+
+.beamWrapper {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rotatingBeam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320%;
+  height: 320%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 45deg,
+    rgba(14, 165, 233, 0.05) 55deg,
+    rgba(14, 165, 233, 0.95) 68deg,   /* Light Streak 1: Electric Blue luminous head */
+    rgba(186, 230, 253, 1) 76deg,      /* Light Streak 1: Pure Cyan-White Core */
+    rgba(14, 165, 233, 0.85) 82deg,
+    transparent 94deg,
+    transparent 225deg,
+    rgba(56, 189, 248, 0.05) 235deg,
+    rgba(56, 189, 248, 0.95) 248deg,  /* Light Streak 2: Pale Cyan luminous head (~180° offset) */
+    rgba(240, 249, 255, 1) 256deg,     /* Light Streak 2: Pure White/Cyan Core */
+    rgba(2, 132, 199, 0.85) 262deg,
+    transparent 274deg,
+    transparent 360deg
+  );
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.6));
+  animation: rotateBlueBeams 7s linear infinite;
+  opacity: 0.06;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Active flowing state on card hover and keyboard focus */
+:global(.group):hover .rotatingBeam,
+:global(.group):focus-within .rotatingBeam {
+  opacity: 1;
+}
+
+@keyframes rotateBlueBeams {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Stagger phases across adjacent cards */
+.stagger0 .rotatingBeam {
+  animation-delay: 0s;
+}
+
+.stagger1 .rotatingBeam {
+  animation-delay: -2s;
+}
+
+.stagger2 .rotatingBeam {
+  animation-delay: -4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotatingBeam {
+    animation: none;
+    opacity: 0 !important;
+  }
+}

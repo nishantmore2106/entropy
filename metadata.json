@@ -1,0 +1,6 @@
+{
+  "name": "ENTROPY — Creative Technology Studio",
+  "description": "ENTROPY is an independent creative technology studio working at the intersection of Brand × Design × Technology.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,9 @@
+# ENTROPY — Creative Technology Studio
+# https://entropy.design/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/admin/
+
+Sitemap: https://entropy.design/sitemap.xml

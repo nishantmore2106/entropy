@@ -1,0 +1,22 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Local SQLite Database & backups (Excluded from version control)
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+*.db
+backups/
+
+# Temporary test & browser profile artifacts
+.chrome-temp*
+.aistudio/
+hero-check.png

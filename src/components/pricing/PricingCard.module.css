@@ -1,0 +1,157 @@
+/* =========================================================================
+   ENTROPY PRICING CARD — SLOW WHITE LIGHT RAY BORDER & OBSIDIAN TEXTURE
+   ========================================================================= */
+
+.cardWrapper {
+  position: relative;
+  border-radius: 16px;
+  background-color: #07070a;
+  padding: 1px; /* 1px perimeter gap for the moving light ray */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.cardWrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.04);
+}
+
+/* Static Graphite Border Base */
+.cardWrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Moving White Light Ray: Rotating Conic Beam behind inner surface */
+.borderBeam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260%;
+  height: 260%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 55deg,
+    rgba(255, 255, 255, 0.25) 75deg,
+    rgba(255, 255, 255, 0.95) 90deg,
+    rgba(255, 255, 255, 0.25) 105deg,
+    transparent 125deg,
+    transparent 360deg
+  );
+  animation: rotateBeam 8.5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  transition: opacity 0.35s ease;
+  will-change: transform;
+}
+
+.cardWrapper:hover .borderBeam {
+  opacity: 0.9;
+}
+
+/* Staggered cycle offsets for adjacent cards */
+.stagger0 .borderBeam {
+  animation-delay: 0s;
+}
+
+.stagger1 .borderBeam {
+  animation-delay: -2.85s;
+}
+
+.stagger2 .borderBeam {
+  animation-delay: -5.7s;
+}
+
+@keyframes rotateBeam {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Inner Card Container (Z-index 2 over the beam) */
+.cardInner {
+  position: relative;
+  z-index: 2;
+  border-radius: 15px; /* 16px - 1px */
+  background-color: #050507;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark Obsidian Texture Background Layer */
+.textureLayer {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/pricing/obsidian-texture.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardWrapper:hover .textureLayer {
+  opacity: 0.2;
+}
+
+/* Subtle Gradient Overlay to ensure maximum text readability */
+.textureOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.88) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card Content Layer */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+@media (min-width: 640px) {
+  .cardContent {
+    padding: 30px 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardContent {
+    padding: 34px 30px;
+  }
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  .borderBeam {
+    display: none;
+  }
+  .cardWrapper {
+    transition: none;
+  }
+  .cardWrapper:hover {
+    transform: none;
+  }
+}
