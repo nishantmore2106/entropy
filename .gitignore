@@ -8,7 +8,7 @@ coverage/
 !.env.example
 
 # Local SQLite Database & backups (Excluded from version control)
-data/
+/data/
 *.sqlite
 *.sqlite-journal
 *.sqlite-wal
@@ -20,3 +20,4 @@ backups/
 .chrome-temp*
 .aistudio/
 hero-check.png
+.wrangler/

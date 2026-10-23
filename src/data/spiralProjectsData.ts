@@ -1,0 +1,133 @@
+import { Spiral3DSlide } from '../components/ui/spiral-3d-slider';
+
+export interface SpiralProjectItem extends Spiral3DSlide {
+  id: string;
+  index: string;
+  title: string;
+  category: string;
+  url: string;
+  description: string;
+}
+
+export const spiralProjectsData: SpiralProjectItem[] = [
+  {
+    id: 'glitch',
+    index: '01',
+    title: 'GLITCH — Future Fashion. Redefined.',
+    category: 'Fashion / E-Commerce',
+    url: 'https://glitchcolhing.netlify.app/',
+    src: '/screenshot/glitch.webp',
+    alt: 'GLITCH — Future Fashion. Redefined. High-contrast futuristic apparel storefront',
+    description: 'Cyberpunk streetwear and dystopian digital fashion experience with bold typography and dark aesthetic palettes.',
+  },
+  {
+    id: 'beyond-growth',
+    index: '02',
+    title: 'BEYOND — Bridge to Your Best Self',
+    category: 'Wellness / Personal Growth',
+    url: 'https://beyondgrowth.netlify.app/',
+    src: '/screenshot/beyond-growth.webp',
+    alt: 'BEYOND — Bridge to Your Best Self. Mountain landscape and 3D typography',
+    description: 'Immersive personal transformation platform bridging ambition and well-being with 3D spatial typography and alpine vistas.',
+  },
+  {
+    id: 'lumina',
+    index: '03',
+    title: 'LUMINA — Digital Experience Agency',
+    category: 'Creative Agency / Digital Experience',
+    url: 'https://luminawebagencie.netlify.app/',
+    src: '/screenshot/lumina.webp',
+    alt: 'Lumina Web Agency digital craftsmanship and liquid chrome sculpture showcase',
+    description: 'Refined digital agency presentation showcasing digital craftsmanship, client case studies, and modern web engineering.',
+  },
+  {
+    id: 'journey-ai',
+    index: '04',
+    title: 'Journey AI — Intelligent Productivity Platform',
+    category: 'AI / Digital Product',
+    url: 'https://journeywithai.netlify.app/',
+    src: '/screenshot/journey-ai.webp',
+    alt: 'Journey AI / Artificials — anime bullet train overlooking Mt Fuji and AI platform',
+    description: 'Clean SaaS interface for contextual AI workflows, synthesizing deep inquiry, automated task planning, and intelligence.',
+  },
+  {
+    id: 'snow-luxury',
+    index: '05',
+    title: 'SNOW — High-End Diamond Jewelry',
+    category: 'Luxury / Fine Jewelry',
+    url: 'https://snowluxury.netlify.app/',
+    src: '/screenshot/snow-luxury.webp',
+    alt: 'SNOW — High-End Diamond Jewelry white lion with ice-blue eyes showcase',
+    description: 'Glacial haute-joaillerie editorial flagship showcasing ethically sourced diamonds, precision cuts, and luxury digital design.',
+  },
+  {
+    id: 'builderaura',
+    index: '06',
+    title: 'BuilderAura — Next-Gen Web Experience Builder',
+    category: 'Developer Tools / Web Platform',
+    url: 'https://buidleraura.netlify.app/',
+    src: '/screenshot/builderaura.webp',
+    alt: 'BuilderAura Designing Bold Visions for the Future architecture and component builder',
+    description: 'Component-driven visual website builder empowering teams to assemble fluid, production-ready spatial interfaces at speed.',
+  },
+  {
+    id: 'voltixaura',
+    index: '07',
+    title: 'VoltixAura — High-Velocity Digital Architecture',
+    category: 'SaaS / Technology',
+    url: 'https://voltixaura.netlify.app/',
+    src: '/screenshot/voltixaura.webp',
+    alt: 'Voltix Energy Drink 3D can showcase and product platform',
+    description: 'Enterprise cloud optimization and product experience delivering real-time analytics and 3D product interactions.',
+  },
+  {
+    id: 'travel-japan-escape',
+    index: '08',
+    title: 'Japan Luxury Travel — Curated Expeditions',
+    category: 'Luxury Travel / Editorial',
+    url: 'https://traveljapanescape.netlify.app/',
+    src: '/screenshot/travel-japan-escape.webp',
+    alt: 'Japan Luxury Travel sunset airplane window over Mt Fuji and curated itineraries',
+    description: 'Bespoke private travel concierge presenting meditative photographic journeys, ryokan retreats, and alpine expeditions across Japan.',
+  },
+  {
+    id: 'quiet-shelf',
+    index: '09',
+    title: 'The Quiet Shelf — Curated Library & Reading Archive',
+    category: 'Digital Archive / Editorial',
+    url: 'https://quiteshelf.netlify.app/',
+    src: '/screenshot/quiet-shelf.webp',
+    alt: 'The Quiet Shelf curated reading sanctuary, books on shelf, and literary archive',
+    description: 'Minimalist digital sanctuary archiving timeless essays, slow-reading editions, and curated bibliography in an ultra-clean layout.',
+  },
+  {
+    id: 'hiroshi-samurai',
+    index: '10',
+    title: 'Hiroshi — The Lonely Samurai Archive',
+    category: 'Interactive Experience / Digital Archive',
+    url: 'https://hiroshi-samurai.netlify.app/',
+    src: '/screenshot/hiroshi-samurai.webp',
+    alt: 'Hiroshi — Lonely Samurai historical digital archive in purple lavender grassland',
+    description: 'Atmospheric narrative chronicle weaving feudal history, sweeping purple grassland vistas, dramatic portraiture, and soundscapes.',
+  },
+  {
+    id: 'paws-purrs',
+    index: '11',
+    title: 'Paws & Purrs — Cozy Cat Sanctuary',
+    category: 'Pet Care / Lifestyle',
+    url: 'https://pawsandpurrs.netlify.app/',
+    src: '/screenshot/paws-purrs.webp',
+    alt: 'Paws & Purrs — Your Cats Stay & Home warm wooden interior',
+    description: 'Warm and playful pet hospitality experience featuring cozy cottage interiors and tailored feline accommodations.',
+  },
+  {
+    id: 'atelier-kitchen',
+    index: '12',
+    title: 'Atelier — Kitchen Perfected',
+    category: 'Architecture / Interior Design',
+    url: 'https://atelierkitchen.netlify.app/',
+    src: '/screenshot/atelier-kitchen.webp',
+    alt: 'Atelier Kitchen Designer — Your Kitchen Perfected luxury modern cabinetry',
+    description: 'Architectural kitchen design studio showcasing custom millwork, minimalist surfaces, and precision culinary spaces.',
+  },
+];
