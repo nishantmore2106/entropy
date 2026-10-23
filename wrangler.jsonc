@@ -2,6 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "entropy",
   "compatibility_date": "2026-10-19",
+  "build": {
+    "command": "npm run build"
+  },
   "observability": {
     "enabled": true
   },
