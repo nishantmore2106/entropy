@@ -38,71 +38,73 @@ export const defaultEntropyFaqs: FAQItem[] = [
     id: 'faq-1',
     question: 'What does ENTROPY do?',
     answer:
-      'ENTROPY is an independent creative technology studio working across branding, UI/UX design, website design, and website development. We bring strategy, design, and technology together to create purposeful digital experiences.',
+      'ENTROPY is an independent creative technology studio based in Vadodara, Gujarat. We bring brand strategy, identity design, UI/UX architecture, and modern website engineering together to craft high-performance digital flagships for ambitious companies worldwide.',
   },
   {
     id: 'faq-2',
-    question: 'What services can I work with you on?',
+    question: 'What services does ENTROPY provide?',
     answer:
-      'We work on brand strategy, brand identity, logo design, UI/UX design, website design, landing pages, e-commerce websites, and custom website development. The right scope depends on your project goals.',
+      'Our primary disciplines span brand identity systems, brand strategy, custom logo design, UI/UX systems, bespoke website design, custom frontend development, e-commerce storefronts, campaign landing pages, and motion interaction design.',
   },
   {
     id: 'faq-3',
-    question: 'How much does a project cost?',
-    answer: (
-      <span>
-        Pricing depends on the type of project, its scope, and the functionality required. Our website packages include landing pages, e-commerce websites, and custom websites. Branding and design projects are scoped separately. Visit our{' '}
-        <a
-          href="#pricing"
-          className="text-white underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors"
-        >
-          pricing section
-        </a>{' '}
-        or contact us for a proposal tailored to your needs.
-      </span>
-    ),
+    question: 'Does ENTROPY design and develop complete websites?',
+    answer:
+      'Yes. We handle end-to-end website projects from strategic discovery and information architecture to bespoke interface design, responsive frontend engineering, technical SEO, and production deployment.',
   },
   {
     id: 'faq-4',
-    question: 'Do you design and develop websites?',
+    question: 'Can ENTROPY redesign an existing website?',
     answer:
-      'Yes. We provide website design and development, from defining the visual direction and designing the interface to building responsive pages and implementing the required functionality.',
+      'Yes. We transform underperforming or outdated websites into modern digital flagships. Our redesign process re-evaluates visual art direction, user journeys, content structure, mobile ergonomics, and core performance to dramatically improve engagement and conversion.',
   },
   {
     id: 'faq-5',
-    question: 'Can you redesign an existing website?',
+    question: 'Does ENTROPY build e-commerce websites?',
     answer:
-      "Yes. We can help refine an existing website's visual identity, structure, usability, and responsive experience. The scope depends on the current website and the improvements you need.",
+      'Yes. We design and build bespoke e-commerce experiences that unite high-resolution product storytelling, dynamic collection filtering, frictionless cart interactions, and secure checkout flows.',
   },
   {
     id: 'faq-6',
-    question: 'Can I hire you for branding or logo design only?',
+    question: 'Can ENTROPY create custom landing pages and microsites?',
     answer:
-      'Yes. You can work with ENTROPY on a focused branding project, including logo design or a broader brand identity. We will define the deliverables around your requirements.',
+      'Yes. We build focused, high-conversion campaign landing pages and product launch microsites structured around sharp value propositions, narrative hierarchy, and decisive user actions.',
   },
   {
     id: 'faq-7',
-    question: 'How long does a project take?',
+    question: 'Does ENTROPY work with CMS and dynamic websites?',
     answer:
-      'Timelines depend on the project’s size, complexity, feedback, and required functionality. We establish a realistic schedule after understanding the scope and deliverables.',
+      'Yes. We architect dynamic web applications and scalable content management workflows that allow your team to publish articles, update portfolios, and manage content seamlessly with full security and revision control.',
   },
   {
     id: 'faq-8',
-    question: 'What do you need to start a project?',
+    question: 'How does ENTROPY approach UI/UX design?',
     answer:
-      'Start with a short description of your business, project goals, preferred services, budget range, and any useful references. We can then discuss the scope and next steps.',
+      'We design around user mental models and empirical friction points. We build comprehensive atomic design systems in Figma—complete with typography hierarchies, responsive auto-layouts, accessibility contrasts, and micro-interactions—before developer handoff.',
   },
   {
     id: 'faq-9',
-    question: 'Will my website work on mobile devices?',
+    question: 'Does ENTROPY provide performance optimization and maintenance?',
     answer:
-      'Responsive design is part of our website design and development process. We design and implement layouts with different screen sizes in mind and check the experience across relevant viewport sizes.',
+      'Yes. We build websites with sub-second target load times, semantic HTML, modern asset compression, and clean Core Web Vitals. We also provide ongoing maintenance, uptime monitoring, and security patching to keep platforms running smoothly.',
   },
   {
     id: 'faq-10',
-    question: 'How do I get started with ENTROPY?',
+    question: 'Does ENTROPY create motion graphics and interaction design?',
     answer:
-      'Tell us what you are looking to create or improve. Share your goals, requirements, and any relevant references through our contact channel. We can then discuss the project and its next steps.',
+      'Yes. We craft purposeful micro-interactions, scroll-linked spatial camera transforms, 60fps kinetic reveals, and WebGL animation details that make digital experiences feel alive while honoring prefers-reduced-motion preferences.',
+  },
+  {
+    id: 'faq-11',
+    question: 'What affects the price and timeline of a website project?',
+    answer:
+      'Project scope, custom functionality, number of unique page templates, 3D or animation requirements, and third-party integrations determine cost and timing. Standard landing pages typically take 1–3 weeks, while comprehensive brand and website builds take 4–8 weeks with tailored proposals.',
+  },
+  {
+    id: 'faq-12',
+    question: 'How can a prospective client start a project?',
+    answer:
+      'Start by submitting a project enquiry through our contact form or emailing entropy.helpdesk@gmail.com with your project overview, goals, desired timeline, and budget range. We review your requirements and respond within one business day.',
   },
 ];
 

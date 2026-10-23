@@ -5,6 +5,7 @@ import { LayeredHeadingReveal } from '../components/common/LayeredHeadingReveal'
 import { BlueEdgeBeam } from '../components/ui/BlueEdgeBeam';
 import { Vortex } from '../components/ui/Vortex';
 import { ProjectItem, projectsData } from '../data/projectsData';
+import { trackEvent } from '../lib/analytics';
 
 export interface WorksPageProps {
   onSelectProject?: (project: ProjectItem) => void;
@@ -344,6 +345,12 @@ export const WorksPage: React.FC<WorksPageProps> = ({ onSelectProject }) => {
                       target={isExternal ? '_blank' : undefined}
                       rel={isExternal ? 'noopener noreferrer' : undefined}
                       onClick={(e) => {
+                        trackEvent('portfolio_project_opened', {
+                          project_id: project.id,
+                          project_name: project.name,
+                          url: project.url,
+                          category: project.displayCategory,
+                        });
                         if (!isExternal && onSelectProject && targetItem) {
                           e.preventDefault();
                           onSelectProject(targetItem);

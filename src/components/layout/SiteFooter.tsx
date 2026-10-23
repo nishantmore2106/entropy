@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollReveal } from '../common/ScrollReveal';
 import { useRouter } from '../../router/Router';
+import { trackEvent } from '../../lib/analytics';
 
 export interface SiteFooterProps {
   onOpenInquiry?: () => void;
@@ -128,7 +129,10 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
                 <li>
                   <button
                     type="button"
-                    onClick={onOpenInquiry}
+                    onClick={() => {
+                      trackEvent('project_enquiry_initiated', { source: 'footer_contact_link' });
+                      if (onOpenInquiry) onOpenInquiry();
+                    }}
                     className="hover:text-white transition-colors duration-200 cursor-pointer uppercase text-left"
                   >
                     Contact

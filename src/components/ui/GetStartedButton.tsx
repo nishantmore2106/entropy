@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './GetStartedButton.module.css';
 import { Link } from '../../router/Router';
+import { trackEvent } from '../../lib/analytics';
 
 export interface GetStartedButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
@@ -46,6 +47,18 @@ export const GetStartedButton: React.FC<GetStartedButtonProps> = ({
   const combinedClass = `${baseClass} ${isCompact ? styles.compact : ''} ${className}`;
   const accessibleLabel = ariaLabel || (typeof labelText === 'string' ? labelText : 'Action');
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (to === '/contact' || href?.includes('contact') || href?.startsWith('mailto:') || !to) {
+      trackEvent('project_enquiry_initiated', {
+        label: typeof labelText === 'string' ? labelText : 'CTA Button',
+        destination: to || href || 'action',
+      });
+    }
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   const content = (
     <div className={styles.wrap}>
       <p>
@@ -66,7 +79,7 @@ export const GetStartedButton: React.FC<GetStartedButtonProps> = ({
     return (
       <Link
         href={to}
-        onClick={onClick}
+        onClick={handleClick}
         className={combinedClass}
         aria-label={accessibleLabel}
       >
@@ -81,7 +94,7 @@ export const GetStartedButton: React.FC<GetStartedButtonProps> = ({
     return (
       <a
         href={href}
-        onClick={onClick}
+        onClick={handleClick}
         target={target || (isExternal && !href.startsWith('mailto:') ? '_blank' : undefined)}
         rel={rel || (isExternal && !href.startsWith('mailto:') ? 'noopener noreferrer' : undefined)}
         className={combinedClass}
@@ -96,7 +109,7 @@ export const GetStartedButton: React.FC<GetStartedButtonProps> = ({
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       className={combinedClass}
       aria-label={accessibleLabel}
     >

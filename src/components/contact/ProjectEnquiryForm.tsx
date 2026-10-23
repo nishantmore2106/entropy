@@ -7,6 +7,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { WhatsAppIcon } from '../common/BrandIcons';
+import { trackEvent } from '../../lib/analytics';
 
 export interface ProjectEnquiryFormProps {
   initialService?: string;
@@ -90,6 +91,16 @@ export const ProjectEnquiryForm: React.FC<ProjectEnquiryFormProps> = ({
     }
   }, [initialService]);
 
+  const hasStartedRef = React.useRef(false);
+  const markStarted = () => {
+    if (!hasStartedRef.current) {
+      hasStartedRef.current = true;
+      trackEvent('contact_form_started', {
+        service: projectType || initialService || 'unspecified',
+      });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
@@ -132,6 +143,13 @@ export const ProjectEnquiryForm: React.FC<ProjectEnquiryFormProps> = ({
       if (!response.ok) {
         throw new Error(data.error || 'Failed to transmit project enquiry.');
       }
+
+      trackEvent('contact_form_submitted', {
+        service: projectType || 'General Enquiry',
+        budget: budgetTier,
+        country: country.trim(),
+        responseMethod,
+      });
 
       setSubmittedEnquiryId(data.id || null);
       setIsSubmitted(true);
@@ -230,7 +248,7 @@ export const ProjectEnquiryForm: React.FC<ProjectEnquiryFormProps> = ({
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+      <form onSubmit={handleSubmit} onFocus={markStarted} className="space-y-4 sm:space-y-5">
         {/* ROW 1: Name & Email */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>

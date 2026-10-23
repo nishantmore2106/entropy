@@ -11,6 +11,8 @@ import {
   GitHubIcon,
 } from '../common/BrandIcons';
 
+import { trackEvent } from '../../lib/analytics';
+
 export const ContactInfoPanel: React.FC = () => {
   return (
     <aside
@@ -29,6 +31,7 @@ export const ContactInfoPanel: React.FC = () => {
           </div>
           <a
             href={`mailto:${siteConfig.contactEmail}?subject=Project%20Enquiry%20%E2%80%94%20ENTROPY`}
+            onClick={() => trackEvent('email_contact_clicked', { source: 'contact_panel' })}
             className="block text-xs sm:text-[13.5px] font-mono text-white/95 hover:text-sky-300 transition-colors break-all"
           >
             {siteConfig.contactEmail}
@@ -45,6 +48,7 @@ export const ContactInfoPanel: React.FC = () => {
           </div>
           <a
             href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`}
+            onClick={() => trackEvent('phone_contact_clicked', { source: 'contact_panel', channel: 'tel' })}
             className="block text-xs sm:text-[13.5px] font-mono text-white/95 hover:text-emerald-300 transition-colors"
           >
             {siteConfig.phone}

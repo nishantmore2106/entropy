@@ -127,6 +127,7 @@ export const VoxelArcHero: React.FC<VoxelArcHeroProps> = ({
           aria-label="ENTROPY Brand"
         >
           <h1
+            aria-label="ENTROPY — Creative Technology Studio"
             className="flex items-baseline justify-center font-normal lowercase text-[#FFFFFF] font-['Rigter_Regular',_'Rigter',_sans-serif] text-[56px] min-[360px]:text-[64px] min-[380px]:text-[72px] min-[410px]:text-[78px] min-[480px]:text-[86px] sm:text-8xl md:text-9xl lg:text-[142px] xl:text-[158px] tracking-[0.05em] leading-none select-none text-center"
             style={{ fontFamily: "'Rigter Regular', 'Rigter', sans-serif" }}
           >

@@ -1,9 +1,54 @@
 # ENTROPY — Creative Technology Studio
 # https://entropy.design/robots.txt
 
+# Allow discovery by traditional and generative search engines
 User-agent: *
 Allow: /
+Allow: /about-us
+Allow: /services
+Allow: /services/*
+Allow: /works
+Allow: /contact
+Allow: /assets/
+Allow: /projects/
+Allow: /mockups/
+Allow: /services/
+Allow: /models/
+
+# Protect private studio administration and operational APIs
 Disallow: /admin/
-Disallow: /api/admin/
+Disallow: /admin/*
+Disallow: /api/
+Disallow: /api/*
+Disallow: /backups/
+Disallow: /*.sqlite*
+Disallow: /*.db*
+Disallow: /*.env*
+
+# AI Search Crawlers (Explicit discovery permission for public indexation)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 Sitemap: https://entropy.design/sitemap.xml

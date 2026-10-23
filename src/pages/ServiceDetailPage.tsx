@@ -173,6 +173,93 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         </div>
 
         {/* 
+          Section 2: Problem Solved & Suitable For (Two-Column Card Grid)
+        */}
+        <div className="py-16 sm:py-24 border-b border-[#1C1C24]/80">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="p-8 rounded-xl bg-[#08080C] border border-[#1A1A24]">
+              <span className="text-xs font-mono tracking-wider text-[#38bdf8] mb-3 block">
+                01 / Problems we address
+              </span>
+              <h2 className="text-xl sm:text-2xl font-['Rigter',sans-serif] text-white mb-4">
+                What this solves for your business
+              </h2>
+              <p className="text-sm sm:text-base text-[#A1A1A6] leading-relaxed">
+                {service.problemSolved}
+              </p>
+            </div>
+
+            <div className="p-8 rounded-xl bg-[#08080C] border border-[#1A1A24]">
+              <span className="text-xs font-mono tracking-wider text-[#38bdf8] mb-3 block">
+                02 / Suitability & Fit
+              </span>
+              <h2 className="text-xl sm:text-2xl font-['Rigter',sans-serif] text-white mb-4">
+                Who this service is tailored for
+              </h2>
+              <p className="text-sm sm:text-base text-[#A1A1A6] leading-relaxed">
+                {service.suitableFor}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 
+          Section 3: Four-Step Process Architecture
+        */}
+        {service.processSteps && service.processSteps.length > 0 && (
+          <div className="py-16 sm:py-24 border-b border-[#1C1C24]/80">
+            <div className="mb-12">
+              <span className="text-xs font-mono tracking-wider text-[#8E8E93] mb-2 block">
+                Methodology
+              </span>
+              <h2 className="font-['Rigter',sans-serif] text-3xl sm:text-4xl text-white tracking-tight">
+                Our structured delivery process
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {service.processSteps.map((step) => (
+                <div
+                  key={step.step}
+                  className="p-6 rounded-xl bg-[#09090D] border border-[#1C1C26] flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-xs font-mono text-[#38bdf8] font-bold tracking-wider mb-4 block">
+                      Phase {step.step}
+                    </span>
+                    <h3 className="text-lg font-medium text-white mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#8E8E93] leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Scope, Timelines & Pricing Factors */}
+            <div className="mt-8 p-6 rounded-xl bg-[#07070A] border border-[#181820] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="max-w-3xl">
+                <span className="text-xs font-mono text-[#8E8E93] block mb-1">
+                  Scope &amp; timeline factors
+                </span>
+                <p className="text-xs sm:text-sm text-[#A1A1A6]">
+                  {service.pricingFactors}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => onOpenInquiry?.(service.name)}
+                className="shrink-0 text-xs font-medium text-[#38bdf8] hover:text-white transition-colors underline underline-offset-4"
+              >
+                Request tailored proposal →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 
           Recent Work Subsection:
           Displays actual, verified screenshots of our real website projects
         */}

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { WorksWheel, WorksWheelItem } from '../components/ui/works-wheel';
 import { ProjectItem, projectsData } from '../data/projectsData';
+import { trackEvent } from '../lib/analytics';
 
 interface SelectedWorkSectionProps {
   onSelectProject?: (project: ProjectItem) => void;
@@ -187,7 +188,14 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({
           action="View project"
           progress={scrollProgress}
           onSelectIndex={handleSelectIndex}
-          onSelectProject={onSelectProject}
+          onSelectProject={(project) => {
+            trackEvent('portfolio_project_opened', {
+              project_id: project.id,
+              project_name: project.title,
+              category: project.category,
+            });
+            if (onSelectProject) onSelectProject(project);
+          }}
           className="w-full h-full bg-[#000000]"
         />
       </div>
