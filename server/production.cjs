@@ -692,10 +692,15 @@ app.post('/api/admin/email/retry/:id', requireAdminAuth, (req, res) => {
   res.json({ success: true });
 });
 
-// Serve static frontend in production
+// Serve static frontend in production with route-level prerendered HTML resolution
 if (fs.existsSync(distDir)) {
-  app.use(express.static(distDir));
-  app.get('*', (_req, res) => {
+  app.use(express.static(distDir, { redirect: false }));
+  app.get('*', (req, res) => {
+    const cleanPath = req.path.replace(/^\/+|\/+$/g, '');
+    const specificHtml = path.resolve(distDir, cleanPath, 'index.html');
+    if (cleanPath && fs.existsSync(specificHtml)) {
+      return res.sendFile(specificHtml);
+    }
     res.sendFile(path.resolve(distDir, 'index.html'));
   });
 }
