@@ -11,9 +11,9 @@ export interface BreadcrumbItem {
  * Builds canonical schema for the ENTROPY organization and professional studio entity.
  */
 export function buildOrganizationSchema(): Record<string, unknown> {
-  return {
+  const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': ['Organization', 'ProfessionalService'],
+    '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
     name: siteConfig.studioName,
     legalName: siteConfig.legalName,
@@ -36,19 +36,6 @@ export function buildOrganizationSchema(): Record<string, unknown> {
       postalCode: siteConfig.address.postalCode,
       addressCountry: siteConfig.address.addressCountry,
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: siteConfig.geo.latitude,
-      longitude: siteConfig.geo.longitude,
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:30',
-        closes: '18:30',
-      },
-    ],
     priceRange: siteConfig.priceRange,
     currenciesAccepted: 'INR, USD, EUR, GBP',
     paymentAccepted: 'Bank Transfer, Credit Card, Wire',
@@ -74,6 +61,18 @@ export function buildOrganizationSchema(): Record<string, unknown> {
       'Digital Product Strategy',
     ],
   };
+
+  // Only include exact GeoCoordinates and walk-in storefront hours if owner has verified a public physical office
+  if (siteConfig.hasPublicPhysicalOffice && siteConfig.publishExactCoordinates && siteConfig.geo) {
+    schema['@type'] = ['Organization', 'ProfessionalService'];
+    schema.geo = {
+      '@type': 'GeoCoordinates',
+      latitude: siteConfig.geo.latitude,
+      longitude: siteConfig.geo.longitude,
+    };
+  }
+
+  return schema;
 }
 
 /**

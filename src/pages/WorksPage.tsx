@@ -22,6 +22,7 @@ export interface PortfolioProject {
   alt: string;
   badgeText?: string;
   projectItem?: ProjectItem;
+  classification?: 'Client Work' | 'Studio Concept' | 'Demonstration Platform' | 'UI/UX Case Study';
 }
 
 /**
@@ -52,6 +53,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     image: '/projects/pulse.webp',
     alt: 'PULSE — Health, sleep tracking and mindfulness mobile application UI/UX design',
     badgeText: 'View Case Study',
+    classification: 'UI/UX Case Study',
   },
   {
     id: 'redesign-it',
@@ -62,6 +64,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     image: '/projects/redesign-it.webp',
     alt: 'ReDesign it — Spatial interior architecture and room staging mobile application UI/UX',
     badgeText: 'View Case Study',
+    classification: 'UI/UX Case Study',
   },
   {
     id: 'glitch',
@@ -71,6 +74,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://glitchcolhing.netlify.app/',
     image: '/projects/glitch.webp',
     alt: 'GLITCH — Futuristic apparel storefront and cyberpunk streetwear catalog',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'beyond-growth',
@@ -80,6 +84,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://beyondgrowth.netlify.app/',
     image: '/projects/beyond-growth.webp',
     alt: 'BEYOND — Holistic personal development, executive coaching and wellness platform',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'lumina',
@@ -89,6 +94,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://luminawebagencie.netlify.app/',
     image: '/projects/lumina.webp',
     alt: 'LUMINA — Next-generation digital design agency showcase with interactive lighting',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'journey-ai',
@@ -98,6 +104,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://journeywithai.netlify.app/',
     image: '/projects/journey-ai.webp',
     alt: 'JOURNEY AI — Ambient workflow intelligence platform with kinetic typography',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'snow-luxury',
@@ -107,6 +114,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://snowluxury.netlify.app/',
     image: '/projects/snow-luxury.webp',
     alt: 'SNOW LUXURY — Minimalist haute horlogerie atelier featuring sapphire-crystal case studies',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'builderaura',
@@ -116,6 +124,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://buidleraura.netlify.app/',
     image: '/projects/builderaura.webp',
     alt: 'BUILDERAURA — Spatial construction management platform with interactive architectural blueprints',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'voltixaura',
@@ -125,6 +134,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://voltixaura.netlify.app/',
     image: '/projects/voltixaura.webp',
     alt: 'VOLTIX — Industrial grid telemetry and high-voltage renewable energy monitoring platform',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'travel-japan-escape',
@@ -134,6 +144,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://traveljapanescape.netlify.app/',
     image: '/projects/travel-japan-escape.webp',
     alt: 'TRAVEL JAPAN ESCAPE — Immersive travel journal and editorial guide across Tokyo, Kyoto and Hokkaido',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'quiet-shelf',
@@ -143,6 +154,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://quiteshelf.netlify.app/',
     image: '/projects/quiet-shelf.webp',
     alt: 'QUIET SHELF — Editorial independent book publisher with linen textures and warm typography',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'hiroshi-samurai',
@@ -152,6 +164,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://hiroshi-samurai.netlify.app/',
     image: '/projects/hiroshi-samurai.webp',
     alt: 'HIROSHI — Archival tribute to feudal Japanese craftsmanship, samurai blade metallurgy and calligraphic heritage',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'gujarat-manpower',
@@ -161,6 +174,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://gujaratmanpowerservices.com/',
     image: '/projects/gujarat-manpower.webp',
     alt: 'GUJARAT MANPOWER — Enterprise industrial staffing solutions across manufacturing and logistical corridors',
+    classification: 'Client Work',
   },
   {
     id: 'bites-bombay',
@@ -170,6 +184,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://bitesbombaysandwich.in/',
     image: '/projects/bites-bombay.webp',
     alt: 'BITES BOMBAY — Vibrant culinary storefront celebrating artisanal street gourmet cuisine and spiced sandwiches',
+    classification: 'Client Work',
   },
   {
     id: 'fortune-makers',
@@ -179,6 +194,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://fortunemakeres.netlify.app/',
     image: '/projects/fortune-makers.webp',
     alt: 'FORTUNEMAKERS — Strategic investment advisory firm and wealth management portal',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'paws-purrs',
@@ -188,6 +204,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://pawspurs.netlify.app/',
     image: '/projects/paws-purrs.webp',
     alt: 'PAWS & PURRS — Premium organic companion care boutique and veterinary nutrition storefront',
+    classification: 'Demonstration Platform',
   },
   {
     id: 'atelier-kitchen',
@@ -197,6 +214,7 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     url: 'https://atelierkithcens.netlify.app/',
     image: '/projects/atelier-kitchen.webp',
     alt: 'ATELIER KITCHENS — Bespoke architectural cabinetry, marble countertops, and handcrafted European kitchen spaces',
+    classification: 'Demonstration Platform',
   },
 ];
 
@@ -404,9 +422,16 @@ export const WorksPage: React.FC<WorksPageProps> = ({ onSelectProject }) => {
                             <h2 className="text-sm sm:text-[15px] font-['Inter',sans-serif] font-medium text-white tracking-tight truncate leading-snug">
                               {project.name}
                             </h2>
-                            <p className="text-xs text-[#8E8E93] font-['Inter',sans-serif] font-normal mt-0.5 truncate">
-                              {project.displayCategory}
-                            </p>
+                            <div className="flex items-center gap-2 mt-0.5">
+                              <p className="text-xs text-[#8E8E93] font-['Inter',sans-serif] font-normal truncate">
+                                {project.displayCategory}
+                              </p>
+                              {project.classification && (
+                                <span className="text-[9.5px] font-mono tracking-wider uppercase px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-[#A1A1A6] shrink-0">
+                                  {project.classification}
+                                </span>
+                              )}
+                            </div>
                           </div>
 
                           <div

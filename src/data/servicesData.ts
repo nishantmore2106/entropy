@@ -190,7 +190,7 @@ export const servicesData: ServiceItem[] = [
     ],
     longDescription: [
       'A symbol must carry immense semantic weight within milliseconds of recognition. Our logo design process explores dozens of conceptual routes, evaluating form, geometric balance, negative space, and typographic nuance to discover the singular mark that defines your organization.',
-      'We pressure-test every symbol across micro-favicons, mobile app headers, physical architectural signage, and 3D kinetic renders to guarantee flawless legibility and balance in any context or scale.',
+      'We pressure-test every symbol across micro-favicons, mobile app headers, physical architectural signage, and 3D kinetic renders to verify optimal legibility and balance across diverse contexts and scales.',
       'Each mark is delivered with comprehensive construction grids, monochrome variations, and precise safe-zone guidance.',
     ],
     inclusions: [

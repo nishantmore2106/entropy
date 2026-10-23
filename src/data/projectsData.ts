@@ -343,7 +343,7 @@ export const projectsData: ProjectItem[] = [
     categoryLabel: '11 / Workforce Infrastructure & Facility Management',
     tagline: 'Trusted industrial manpower and compliance partner since 2013.',
     shortDescription: 'Enterprise workforce deployment platform serving 50+ industrial sites across Gujarat with statutory compliance verification, technical staffing, and facility management.',
-    fullDescription: 'Gujarat Manpower Services delivers mission-critical human capital solutions across manufacturing, chemical, pharmaceutical, and engineering hubs. We engineered a high-trust corporate portal featuring statutory compliance guarantees, multi-site workforce deployment directories, emergency crew dispatch protocols, and an interactive RFQ quotation engine.',
+    fullDescription: 'Gujarat Manpower Services delivers mission-critical human capital solutions across manufacturing, chemical, pharmaceutical, and engineering hubs. We engineered a high-trust corporate portal featuring statutory compliance verification workflows, multi-site workforce deployment directories, emergency crew dispatch protocols, and an interactive RFQ quotation engine.',
     year: '2025',
     url: 'https://gujaratmanpowerservices.com/',
     image: '/projects/gujarat-manpower.webp',

@@ -17,25 +17,59 @@ import { FinalCtaSection } from './sections/FinalCtaSection';
 import { SiteFooter } from './components/layout/SiteFooter';
 
 import { MagneticDockNav } from './components/navigation/MagneticDockNav';
-import { CaseStudyModal } from './components/modals/CaseStudyModal';
-import { ProjectInquiryModal } from './components/modals/ProjectInquiryModal';
 import { ProjectItem } from './data/projectsData';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { getServiceBySlug } from './data/servicesData';
-import { ServiceDetailPage } from './pages/ServiceDetailPage';
-import { AboutUsPage } from './pages/AboutUsPage';
-import { WorksPage } from './pages/WorksPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { ComingSoonPage } from './pages/ComingSoonPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { ContactPage } from './pages/ContactPage';
 import { PageTransition } from './components/transition/PageTransition';
 import { RouteMetadata } from './components/common/RouteMetadata';
-import { AdminLoginPage } from './pages/admin/AdminLoginPage';
-import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
-import { AdminEnquiriesPage } from './pages/admin/AdminEnquiriesPage';
-import { AdminEnquiryDetailPage } from './pages/admin/AdminEnquiryDetailPage';
-import { AdminEmailPage } from './pages/admin/AdminEmailPage';
+
+// Dynamic route-level code splitting for secondary pages
+const ServiceDetailPage = React.lazy(() =>
+  import('./pages/ServiceDetailPage').then((m) => ({ default: m.ServiceDetailPage }))
+);
+const AboutUsPage = React.lazy(() =>
+  import('./pages/AboutUsPage').then((m) => ({ default: m.AboutUsPage }))
+);
+const WorksPage = React.lazy(() =>
+  import('./pages/WorksPage').then((m) => ({ default: m.WorksPage }))
+);
+const ServicesPage = React.lazy(() =>
+  import('./pages/ServicesPage').then((m) => ({ default: m.ServicesPage }))
+);
+const ComingSoonPage = React.lazy(() =>
+  import('./pages/ComingSoonPage').then((m) => ({ default: m.ComingSoonPage }))
+);
+const NotFoundPage = React.lazy(() =>
+  import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage }))
+);
+const ContactPage = React.lazy(() =>
+  import('./pages/ContactPage').then((m) => ({ default: m.ContactPage }))
+);
+
+// Dynamic code splitting for private admin suite
+const AdminLoginPage = React.lazy(() =>
+  import('./pages/admin/AdminLoginPage').then((m) => ({ default: m.AdminLoginPage }))
+);
+const AdminDashboardPage = React.lazy(() =>
+  import('./pages/admin/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage }))
+);
+const AdminEnquiriesPage = React.lazy(() =>
+  import('./pages/admin/AdminEnquiriesPage').then((m) => ({ default: m.AdminEnquiriesPage }))
+);
+const AdminEnquiryDetailPage = React.lazy(() =>
+  import('./pages/admin/AdminEnquiryDetailPage').then((m) => ({ default: m.AdminEnquiryDetailPage }))
+);
+const AdminEmailPage = React.lazy(() =>
+  import('./pages/admin/AdminEmailPage').then((m) => ({ default: m.AdminEmailPage }))
+);
+
+// Dynamic code splitting for on-demand overlay modals
+const CaseStudyModal = React.lazy(() =>
+  import('./components/modals/CaseStudyModal').then((m) => ({ default: m.CaseStudyModal }))
+);
+const ProjectInquiryModal = React.lazy(() =>
+  import('./components/modals/ProjectInquiryModal').then((m) => ({ default: m.ProjectInquiryModal }))
+);
 
 function AppContent() {
   const { pathname, navigate } = useRouter();
@@ -62,56 +96,29 @@ function AppContent() {
 
   // Handle Protected /admin routes with separate dedicated layout
   if (isAdminRoute) {
+    let adminContent: React.ReactNode = <AdminDashboardPage />;
+
     if (cleanPath === '/admin/login') {
-      return (
-        <div className="min-h-screen bg-[#07080B] text-white font-sans">
-          <RouteMetadata />
-          <AdminLoginPage />
-        </div>
-      );
-    }
-
-    if (cleanPath === '/admin' || cleanPath === '/admin/dashboard') {
-      return (
-        <div className="min-h-screen bg-[#07080B] text-white font-sans">
-          <RouteMetadata />
-          <AdminDashboardPage />
-        </div>
-      );
-    }
-
-    if (cleanPath === '/admin/enquiries') {
-      return (
-        <div className="min-h-screen bg-[#07080B] text-white font-sans">
-          <RouteMetadata />
-          <AdminEnquiriesPage />
-        </div>
-      );
-    }
-
-    if (cleanPath === '/admin/email') {
-      return (
-        <div className="min-h-screen bg-[#07080B] text-white font-sans">
-          <RouteMetadata />
-          <AdminEmailPage />
-        </div>
-      );
-    }
-
-    const enquiryDetailMatch = cleanPath.match(/^\/admin\/enquiries\/([a-zA-Z0-9_-]+)$/);
-    if (enquiryDetailMatch) {
-      return (
-        <div className="min-h-screen bg-[#07080B] text-white font-sans">
-          <RouteMetadata />
-          <AdminEnquiryDetailPage id={enquiryDetailMatch[1]} />
-        </div>
-      );
+      adminContent = <AdminLoginPage />;
+    } else if (cleanPath === '/admin' || cleanPath === '/admin/dashboard') {
+      adminContent = <AdminDashboardPage />;
+    } else if (cleanPath === '/admin/enquiries') {
+      adminContent = <AdminEnquiriesPage />;
+    } else if (cleanPath === '/admin/email') {
+      adminContent = <AdminEmailPage />;
+    } else {
+      const enquiryDetailMatch = cleanPath.match(/^\/admin\/enquiries\/([a-zA-Z0-9_-]+)$/);
+      if (enquiryDetailMatch) {
+        adminContent = <AdminEnquiryDetailPage id={enquiryDetailMatch[1]} />;
+      }
     }
 
     return (
       <div className="min-h-screen bg-[#07080B] text-white font-sans">
         <RouteMetadata />
-        <AdminDashboardPage />
+        <React.Suspense fallback={<div className="min-h-screen bg-[#07080B]" />}>
+          {adminContent}
+        </React.Suspense>
       </div>
     );
   }
@@ -243,25 +250,35 @@ function AppContent() {
 
       {/* Render active route with shared cinematic page transition */}
       <PageTransition>
-        {renderRoute()}
+        <React.Suspense fallback={<div className="min-h-screen bg-[#000000]" />}>
+          {renderRoute()}
+        </React.Suspense>
       </PageTransition>
 
       {/* Shared Global Cinematic Studio Footer across ALL routes */}
       <SiteFooter onOpenInquiry={() => handleOpenInquiry()} />
 
       {/* Case Study Deep-Dive Slide-Over Drawer */}
-      <CaseStudyModal
-        project={activeProject}
-        onClose={() => setActiveProject(null)}
-        onOpenInquiry={(service) => handleOpenInquiry(service)}
-      />
+      {activeProject && (
+        <React.Suspense fallback={null}>
+          <CaseStudyModal
+            project={activeProject}
+            onClose={() => setActiveProject(null)}
+            onOpenInquiry={(service) => handleOpenInquiry(service)}
+          />
+        </React.Suspense>
+      )}
 
       {/* Interactive Project Inquiry Drawer */}
-      <ProjectInquiryModal
-        isOpen={isInquiryOpen}
-        onClose={handleCloseInquiry}
-        initialService={preselectedService}
-      />
+      {isInquiryOpen && (
+        <React.Suspense fallback={null}>
+          <ProjectInquiryModal
+            isOpen={isInquiryOpen}
+            onClose={handleCloseInquiry}
+            initialService={preselectedService}
+          />
+        </React.Suspense>
+      )}
     </div>
   );
 }

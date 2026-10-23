@@ -1,7 +1,12 @@
+# ==============================================================================
 # ENTROPY — Creative Technology Studio
-# https://entropy.design/robots.txt
+# Production Robots & Crawler Directives Configuration
+# Canonical Origin: https://entropy.design/
+# ==============================================================================
 
-# Allow discovery by traditional and generative search engines
+# ------------------------------------------------------------------------------
+# 1. Traditional Search Engines (Googlebot, Bingbot, DuckDuckBot, Yandex, etc.)
+# ------------------------------------------------------------------------------
 User-agent: *
 Allow: /
 Allow: /about-us
@@ -12,10 +17,10 @@ Allow: /contact
 Allow: /assets/
 Allow: /projects/
 Allow: /mockups/
-Allow: /services/
 Allow: /models/
 
-# Protect private studio administration and operational APIs
+# Protect studio administration and operational APIs
+# (Note: Authentication and server firewalls enforce access control; robots.txt manages crawl indexation)
 Disallow: /admin/
 Disallow: /admin/*
 Disallow: /api/
@@ -25,30 +30,65 @@ Disallow: /*.sqlite*
 Disallow: /*.db*
 Disallow: /*.env*
 
-# AI Search Crawlers (Explicit discovery permission for public indexation)
-User-agent: GPTBot
+# ------------------------------------------------------------------------------
+# 2. Conversational Search & Answer Engine Crawlers (AEO / GEO Discovery)
+# These crawlers index public content to surface ENTROPY in real-time search queries
+# with accurate attribution, links, and direct citations.
+# ------------------------------------------------------------------------------
+
+# OpenAI: ChatGPT Search discovery crawler (Used exclusively for search answers with citations, NOT for model training)
+User-agent: OAI-SearchBot
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# OpenAI: User-directed live browsing actions in ChatGPT
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# Perplexity AI: Real-time conversational search discovery crawler
 User-agent: PerplexityBot
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# Anthropic: Search and conversational retrieval crawler
 User-agent: ClaudeBot
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# Apple: Siri, Spotlight, and Safari web search discovery
 User-agent: Applebot
 Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# ------------------------------------------------------------------------------
+# 3. Foundation Model Training Crawlers (Managed Independently from Search)
+# ------------------------------------------------------------------------------
+
+# OpenAI: Foundation model training crawler
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Anthropic: Model training crawler
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Apple: Apple Intelligence model training crawler
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# ------------------------------------------------------------------------------
+# 4. XML Sitemap Location
+# ------------------------------------------------------------------------------
 Sitemap: https://entropy.design/sitemap.xml

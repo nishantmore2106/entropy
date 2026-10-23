@@ -22,6 +22,28 @@ export default defineConfig(() => {
         { find: '@', replacement: path.resolve(__dirname, './src') },
       ],
     },
+    build: {
+      chunkSizeWarningLimit: 800,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/three') || id.includes('node_modules/@react-three')) {
+              return 'vendor-three';
+            }
+            if (
+              id.includes('node_modules/framer-motion') ||
+              id.includes('node_modules/motion') ||
+              id.includes('node_modules/gsap')
+            ) {
+              return 'vendor-motion';
+            }
+            if (id.includes('node_modules/lucide-react')) {
+              return 'vendor-icons';
+            }
+          },
+        },
+      },
+    },
     server: {
       // Strictly deny direct filesystem access to backend directories and secrets
       fs: {
